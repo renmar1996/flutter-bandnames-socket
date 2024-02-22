@@ -11,8 +11,16 @@ this.votes,
 });
 
 factory BandModel.fromJson(Map<String,dynamic> json )=> BandModel(
-  id: json['id'],
-  name: json['name'],
-  votes: json['votes'],
+  id: json.containsKey('id')? json['id']: '',
+  name: json.containsKey('name')? json['name']: '',
+  votes: json.containsKey('votes')? json['votes']: '',
 );
+
+Map<String,dynamic> toJson(){
+  return {
+    'id':id,
+    'name':name,
+    'votes':votes,
+    };
+}
 }
